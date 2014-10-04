@@ -1,0 +1,19 @@
+/*!
+ * ENVIRONMENT CONFIG
+ * ==================
+ * You can override 'default' configuration file by creating a new one for example your 'local'
+ * instance and then just preset node.js environment before you run the server script.
+ *
+ * $ export NODE_ENV=production
+ * $ node index.js
+ */
+{
+    // Configration
+    "name": "default",
+
+    // HTTP and Express
+    "http": {
+        "host": "127.0.0.1",
+        "port": 3000
+    }
+}
