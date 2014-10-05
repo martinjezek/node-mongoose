@@ -2,7 +2,7 @@
 
 var express = require('express');
 
-exports.router = express.Router()
+module.exports = express.Router()
 
     .get('/', function(req, res, next) {
         res.send('List of Groups');

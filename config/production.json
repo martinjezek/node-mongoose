@@ -8,7 +8,7 @@
  * $ node index.js
  */
 {
-    // Configration
+    // Environment Name
     "name": "production",
 
     // HTTP and Express
