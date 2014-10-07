@@ -11,17 +11,17 @@ mongoose.connection.once('open', function() {
 
     var app     = express(),
         routes  = {
-            index   : require('./routes/index.js'),
-            user    : require('./routes/user.js'),
-            group   : require('./routes/group.js'),
+            index   : require('./routes/index'),
+            user    : require('./routes/user'),
+            group   : require('./routes/group'),
         };
 
     // public files
     app.use(express.static(path.join(__dirname, '/public')));
 
     // app routes
-    app.use('/', routes.index);
-    app.use('/user', routes.user);
+    app.use('/'     , routes.index);
+    app.use('/user' , routes.user);
     app.use('/group', routes.group);
 
     http.createServer(app).listen(config.get('http.port'), config.get('http.host'), function() {
