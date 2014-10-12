@@ -13,7 +13,7 @@ mongoose.connection.once('open', function() {
         routes  = {
             index   : require('./routes/index'),
             user    : require('./routes/user'),
-            group   : require('./routes/group'),
+            group   : require('./routes/group')
         };
 
     // public files
