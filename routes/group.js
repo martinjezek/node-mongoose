@@ -2,7 +2,7 @@
 
 var express     = require('express'),
     bodyParser  = require('body-parser'),
-    group       = require('../lib/group');
+    group       = require('../lib/model/group');
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 

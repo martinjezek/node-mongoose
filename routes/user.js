@@ -2,7 +2,7 @@
 
 var express     = require('express'),
     bodyParser  = require('body-parser'),
-    user        = require('../lib/user');
+    user        = require('../lib/model/user');
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
