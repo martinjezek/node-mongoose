@@ -7,8 +7,9 @@ var express     = require('express'),
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 module.exports = express.Router()
-    .get(   '/'                         , user.list)
-    .post(  '/'     , urlencodedParser  , user.create)
-    .get(   '/:id'                      , user.read)
-    .put(   '/:id'  , urlencodedParser  , user.update)
+    .use(                                 user.middleware)
+    .get('/'                            , user.list)
+    .post('/'       , urlencodedParser  , user.create)
+    .get('/:id'                         , user.read)
+    .put('/:id'     , urlencodedParser  , user.update)
     .delete('/:id'                      , user.delete);
