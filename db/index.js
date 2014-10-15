@@ -6,9 +6,9 @@ var config  = require('config'),
 
 module.exports = {
 
-    connect: function(app, cb) {
+    // connect to the database
+    connect: function(cb) {
         mongodb.connect(function() {
-            app.set('dbReady', true);
             cb(colors.green('    ✓ ') + colors.grey('MongoDB connected'));
         });
     }
