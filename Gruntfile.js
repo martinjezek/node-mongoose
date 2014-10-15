@@ -8,7 +8,18 @@ module.exports = function(grunt) {
             options: {
                 jshintrc: '.jshintrc'
             },
-            src: ['*.js']
+            src: [
+                '**/*.js',
+                '!node_modules/**/*.js'
+            ]
+        },
+        mochaTest: {
+              test: {
+                options: {
+                  reporter: 'spec'
+                },
+                src: ['test/**/*.js']
+              }
         },
         bump: {
             options: {
@@ -28,11 +39,13 @@ module.exports = function(grunt) {
     });
 
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-mocha-test');
     grunt.loadNpmTasks('grunt-bump');
     grunt.loadNpmTasks('grunt-conventional-changelog');
 
     grunt.registerTask('default', ['test']);
-    grunt.registerTask('test', ['jshint']);
+    grunt.registerTask('mocha', ['mochaTest']);
+    grunt.registerTask('test', ['jshint', 'mocha']);
 
     // end-point tasks
     grunt.registerTask('release', function(version) {
