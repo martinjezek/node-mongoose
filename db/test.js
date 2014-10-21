@@ -1,7 +1,6 @@
 'use strict';
 
-var config  = require('config'),
-    mongodb = require('./mongodb');
+var mongodb = require('./mongodb');
 
 module.exports = {
 

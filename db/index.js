@@ -1,7 +1,6 @@
 'use strict';
 
-var config  = require('config'),
-    colors  = require('colors'),
+var colors  = require('colors'),
     mongodb = require('./mongodb');
 
 module.exports = {
