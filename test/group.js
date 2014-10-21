@@ -215,4 +215,103 @@ describe('group', function() {
             });
     });
 
+    it('should assign a user to a group', function(done) {
+        // add a group
+        request(app).post('/group')
+            .type('form')
+            .send({
+                name: 'Developers'
+            })
+            .end(function(err, res) {
+                var groupId = res.body._id;
+                // add a user
+                request(app).post('/user')
+                    .type('form')
+                    .send({
+                        name: 'Martin',
+                        age: 27
+                    })
+                    .end(function(err, res) {
+                        var userId = res.body._id;
+                        // assign the user to the group
+                        request(app).post('/group/' + groupId + '/user/' + userId)
+                            .end(function(err, res) {
+                                res.status.should.equal(200);
+                                res.body.should.be.type('object');
+                                res.body._id.should.equal(groupId);
+                                res.body.users.length.should.equal(1);
+                                res.body.users[0].should.equal(userId);
+                                // get the group
+                                request(app).get('/group/' + groupId)
+                                    .end(function(err, res) {
+                                        res.body.should.be.type('object');
+                                        res.body._id.should.equal(groupId);
+                                        res.body.users.length.should.equal(1);
+                                        res.body.users[0].should.equal(userId);
+                                        // get the user
+                                        request(app).get('/user/' + userId)
+                                            .end(function(err, res) {
+                                                res.status.should.equal(200);
+                                                res.body.should.be.type('object');
+                                                res.body._id.should.equal(userId);
+                                                res.body.groups.length.should.equal(1);
+                                                res.body.groups[0].should.equal(groupId);
+                                                done();
+                                            });
+                                    });
+                            });
+                    });
+            });
+    });
+
+    it('should unassign a user from a group', function(done) {
+        // add a group
+        request(app).post('/group')
+            .type('form')
+            .send({
+                name: 'Developers'
+            })
+            .end(function(err, res) {
+                var groupId = res.body._id;
+                // add a user
+                request(app).post('/user')
+                    .type('form')
+                    .send({
+                        name: 'Martin',
+                        age: 27
+                    })
+                    .end(function(err, res) {
+                        var userId = res.body._id;
+                        // assign the user to the group
+                        request(app).post('/group/' + groupId + '/user/' + userId)
+                            .end(function(err, res) {
+                                // unassign the user from the group
+                                request(app).del('/group/' + groupId + '/user/' + userId)
+                                    .end(function(err, res) {
+                                        res.status.should.equal(200);
+                                        res.body.should.be.type('object');
+                                        res.body._id.should.equal(groupId);
+                                        res.body.users.length.should.equal(0);
+                                        // get the group
+                                        request(app).get('/group/' + groupId)
+                                            .end(function(err, res) {
+                                                res.body.should.be.type('object');
+                                                res.body._id.should.equal(groupId);
+                                                res.body.users.length.should.equal(0);
+                                                // get the user
+                                                request(app).get('/user/' + userId)
+                                                    .end(function(err, res) {
+                                                        res.status.should.equal(200);
+                                                        res.body.should.be.type('object');
+                                                        res.body._id.should.equal(userId);
+                                                        res.body.groups.length.should.equal(0);
+                                                        done();
+                                                    });
+                                            });
+                                    });
+                            });
+                    });
+            });
+    });
+
 });
