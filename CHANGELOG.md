@@ -1,3 +1,12 @@
+<a name="0.0.2"></a>
+### 0.0.2 (2014-10-21)
+
+
+#### Features
+
+* implement non-relational db scheme #7 ([e489a0aa](git@github.com:martinjezek/node-mongoose/commit/e489a0aa1f3238635e82000fa40e91cbfba6f73b))
+
+
 <a name="0.0.1"></a>
 ### 0.0.1 (2014-10-15)
 
