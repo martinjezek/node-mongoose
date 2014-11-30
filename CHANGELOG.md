@@ -1,3 +1,12 @@
+<a name="0.0.3"></a>
+### 0.0.3 (2014-11-30)
+
+
+#### Features
+
+* Access-Control-Allow-Origin allows CROS #10 ([71879be8](git@github.com:martinjezek/node-mongoose/commit/71879be8e0f27208f1a150cb9f231d3fc9a46fbc))
+
+
 <a name="0.0.2"></a>
 ### 0.0.2 (2014-10-21)
 
