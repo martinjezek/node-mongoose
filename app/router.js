@@ -8,6 +8,12 @@ module.exports = function(app) {
     // Public files
     app.use(express.static(path.join(process.cwd(), '/public')));
 
+    // CORS - Cross Origin Resource Sharing
+    app.use(function(req, res, next) {
+        res.set('Access-Control-Allow-Origin', '*');
+        next();
+    });
+
     // App routes
     app.use('/'     , require('../routes/index'));
     app.use('/user' , require('../routes/user'));
