@@ -1,3 +1,12 @@
+<a name="0.0.4"></a>
+### 0.0.4 (2014-12-07)
+
+
+#### Bug Fixes
+
+* cross-domain issues such as POST, DELETE #12 ([0f855c46](git@github.com:martinjezek/node-mongoose/commit/0f855c469e43e2fdf37c9c7222fbf666f0a09f93))
+
+
 <a name="0.0.3"></a>
 ### 0.0.3 (2014-11-30)
 

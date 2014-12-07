@@ -1,6 +1,6 @@
 {
   "name": "node-mongoose",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Demo with Node.js and Mongoose.",
   "homepage": "https://github.com/martinjezek/node-mongoose",
   "keywords": [],
